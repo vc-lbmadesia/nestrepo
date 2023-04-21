@@ -1,0 +1,33 @@
+{
+  "prettier.tabWidth": 4,
+  "prettier.printWidth": 120,
+  "prettier.endOfLine": "auto",
+  "prettier.semi": true,
+  "editor.tabSize": 4,
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "peacock.color": "#4b3769",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.productIconTheme": "material-product-icons",
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#63498a",
+    "activityBar.activeBorder": "#422c74",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#2a1e16",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "titleBar.activeBackground": "#4b3769",
+    "titleBar.inactiveBackground": "#4b376999",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "statusBar.background": "#4b3769",
+    "statusBarItem.hoverBackground": "#63498a",
+    "statusBar.foreground": "#e7e7e7",
+    "activityBar.activeBackground": "#63498a",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#63498a",
+    "statusBarItem.remoteBackground": "#4b3769",
+    "statusBarItem.remoteForeground": "#e7e7e7"
+  }
+}

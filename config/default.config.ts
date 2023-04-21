@@ -1,0 +1,16 @@
+export const Defaults = {
+  COUNTRY: 'IND',
+  TIMEZONE: 'ISO',
+  DATEFORMAT: 'YYYY-MM-DD',
+  TIMEFORMAT: 'HH:mm',
+  SYSTEM_TIMEZONE: 'Asia/Calcutta',
+  IP_VERSION: 4,
+  USER_PASSWORD_REGEX: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+  RESET_TOKEN_REGEX: /^[a-zA-Z0-9]{8}$/,
+  TOKEN_EXPIRY_TIME: 2,
+  IS_URL_OPTIONS: { protocols: ['http', 'https'], require_tld: false, require_host: true, require_port: true },
+  REDIRECT_URL_PATH: 'requestToken?requestId=',
+  FORGOT_PASSWORD_SUBJECT: 'forgot password',
+  VERIFY_USER_SUBJECT: 'verify user',
+  LOGS_ZIP_FILE: 'logs.zip',
+};
