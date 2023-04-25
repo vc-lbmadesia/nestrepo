@@ -90,6 +90,9 @@ export class User {
 
   @Prop({ type: SchemaTypes.Boolean, default: false })
   isDeletedUser: boolean;
+
+  @Prop({ type: Number, select: false })
+  __v: number;
 }
 
 export type UserDocument = HydratedDocument<User>;

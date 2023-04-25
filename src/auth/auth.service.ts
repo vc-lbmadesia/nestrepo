@@ -17,10 +17,8 @@ export class AuthService {
 
   async signIn(user: any): Promise<any> {
     return {
-      data: {
-        token: await this.jwtService.signAsync({ emailId: user.emailId, id: user._id }),
-        tokenType: 'Bearer',
-      },
+      token: await this.jwtService.signAsync({ emailId: user.emailId, id: user._id }),
+      tokenType: 'Bearer',
     };
   }
 }

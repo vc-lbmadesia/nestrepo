@@ -11,10 +11,4 @@ export class AuthController {
   signIn(@Request() req) {
     return this.authService.signIn(req.user);
   }
-
-  @UseGuards(AuthGuard('jwt'))
-  @Get('profile')
-  async profile(@Request() req: any) {
-    return req.user;
-  }
 }
