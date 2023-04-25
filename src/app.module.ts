@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { _TEST_ } from 'config/environment.config';
 import { APP_PIPE } from '@nestjs/core';
 import { errorMessages } from 'config/messages.config';
+import { RoomsModule } from './rooms/rooms.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { errorMessages } from 'config/messages.config';
     }),
     ConfigModule.forRoot({ isGlobal: true }),
     UsersModule,
+    RoomsModule,
   ],
   providers: [
     {

@@ -9,7 +9,7 @@ import { errorMessages } from 'config/messages.config';
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  async create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto): Promise<any> {
     let user;
     user = await this.userModel.findOne({ emailId: createUserDto.emailId });
     if (user) throw new BadRequestException(`${errorMessages.EMAIL_ALREADY_EXISTS} ${user.firstName}.`);
@@ -19,12 +19,16 @@ export class UsersService {
     return { data: user, message: 'user created successfully' };
   }
 
-  findAll() {
-    return `This action returns all users`;
+  findOne(query: object): Promise<any> {
+    return this.userModel.findOne(query, { password: 1, emailId: 1 }).lean();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findById(id: number) {
+    return `This action return user`;
+  }
+
+  findAll() {
+    return `This action returns all users`;
   }
 
   remove(id: number) {

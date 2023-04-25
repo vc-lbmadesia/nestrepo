@@ -3,8 +3,6 @@ import { validationMessages } from 'config/messages.config';
 import { SchemaTypes, Types, HydratedDocument } from 'mongoose';
 import validator from 'validator';
 
-export type UserDocument = HydratedDocument<User>;
-
 @Schema({ timestamps: true, collection: 'users' })
 export class User {
   _id: Types.ObjectId;
@@ -92,8 +90,8 @@ export class User {
 
   @Prop({ type: SchemaTypes.Boolean, default: false })
   isDeletedUser: boolean;
-
-  validatePassword: (password: string) => boolean;
 }
+
+export type UserDocument = HydratedDocument<User>;
 
 export const UserSchema = SchemaFactory.createForClass(User);
