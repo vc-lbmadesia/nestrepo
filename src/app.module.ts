@@ -7,6 +7,7 @@ import { _TEST_ } from 'config/environment.config';
 import { APP_PIPE } from '@nestjs/core';
 import { errorMessages } from 'config/messages.config';
 import { RoomsModule } from './rooms/rooms.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { RoomsModule } from './rooms/rooms.module';
       inject: [ConfigService],
     }),
     ConfigModule.forRoot({ isGlobal: true }),
+    AuthModule,
     UsersModule,
     RoomsModule,
   ],

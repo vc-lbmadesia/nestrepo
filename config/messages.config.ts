@@ -19,7 +19,7 @@ export const errorMessages = {
   EMAIL_VERIFY_TOKEN_EXPIRED: 'Email verification token is expired',
   INVALID_PARAMS: 'Invalid value ',
   INVALID_SUBJECT: 'Invalid subject type or subject not define, please add valid subject.',
-  INVALID_CREDENTIAL: 'Credential is mismatched!',
+  INVALID_CREDENTIAL: 'You have entered a wrong emailId or password',
   INVALID_TOKEN: 'Token is invalid!',
 };
 

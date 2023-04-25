@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { RoomsService } from './rooms.service';
 import { CreateRoomDto } from './dto/create-room.dto';
 import { UpdateRoomDto } from './dto/update-room.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('rooms')
 export class RoomsController {
@@ -12,6 +13,7 @@ export class RoomsController {
     return this.roomsService.create(createRoomDto);
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Get()
   findAll() {
     return this.roomsService.findAll();
