@@ -1,4 +1,11 @@
-import { BadRequestException, Module, ValidationError, ValidationPipe } from '@nestjs/common';
+import {
+  BadRequestException,
+  Module,
+  ValidationError,
+  ValidationPipe,
+  MiddlewareConsumer,
+  RequestMethod,
+} from '@nestjs/common';
 import { AppController } from './app.controller';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
@@ -11,6 +18,9 @@ import { AuthModule } from './auth/auth.module';
 import { CommonModule } from './common/common.module';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { ErrorsResponseInterceptor } from './common/interceptors/errors-response.interceptor';
+import { WinstonModule } from 'nest-winston';
+import { winstonOptions } from '../config/logger.config';
+import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 
 @Module({
   imports: [
@@ -30,6 +40,7 @@ import { ErrorsResponseInterceptor } from './common/interceptors/errors-response
     AuthModule,
     UsersModule,
     RoomsModule,
+    WinstonModule.forRootAsync({ useFactory: () => winstonOptions() }),
   ],
   providers: [
     {
@@ -57,4 +68,8 @@ import { ErrorsResponseInterceptor } from './common/interceptors/errors-response
   ],
   controllers: [AppController],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(LoggerMiddleware).forRoutes({ path: '*', method: RequestMethod.ALL });
+  }
+}
