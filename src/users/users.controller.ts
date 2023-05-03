@@ -26,7 +26,6 @@ export class UsersController {
   @UseGuards(AuthGuard('jwt'))
   @Get('profile')
   profile(@Request() req: any) {
-    throw new BadRequestException('simple error of server');
-    // return this.usersService.findById(req.user.id);
+    return this.usersService.findById(req.user.id);
   }
 }
