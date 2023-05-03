@@ -1,6 +1,6 @@
 import { IsAlpha, IsEmail, IsNotEmpty, IsOptional, IsString, Matches, MaxLength, MinLength } from 'class-validator';
-import { Defaults } from 'config/default.config';
-import { validationMessages } from 'config/messages.config';
+import { Defaults } from '../../../config/default.config';
+import { validationMessages } from '../../../config/messages.config';
 
 export class CreateUserDto {
   @IsString()

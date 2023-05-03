@@ -10,7 +10,7 @@ export class AuthService {
 
   async validateUser(loginAuthDto: LoginAuthDto): Promise<any> {
     const user = await this.userService.findOne({ emailId: loginAuthDto.emailId });
-    if (user || (await bcrypt.compare(loginAuthDto.password, user.password))) return user;
+    if (user && (await bcrypt.compare(loginAuthDto.password, user.password))) return user;
 
     return null;
   }

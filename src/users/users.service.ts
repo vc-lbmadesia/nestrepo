@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { User, UserDocument } from './schemas/user.schema';
 import mongoose, { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { errorMessages } from 'config/messages.config';
+import { successMessages, errorMessages } from '../../config/messages.config';
 
 @Injectable()
 export class UsersService {
@@ -16,14 +16,14 @@ export class UsersService {
 
     user = await this.userModel.create(createUserDto);
 
-    return { data: user, message: 'user created successfully' };
+    return { data: user, message: successMessages.USER_CREATE };
   }
 
-  findOne(query: object): Promise<any> {
+  findOne(query: object): Promise<UserDocument> {
     return this.userModel.findOne(query, { password: 1, emailId: 1 }).lean();
   }
 
-  findById(id: mongoose.Types.ObjectId): Promise<any> {
+  findById(id: mongoose.Types.ObjectId): Promise<UserDocument> {
     return this.userModel.findById(id).lean();
   }
 }

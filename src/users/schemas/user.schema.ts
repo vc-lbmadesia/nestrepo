@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { validationMessages } from 'config/messages.config';
+import { validationMessages } from '../../../config/messages.config';
 import { SchemaTypes, Types, HydratedDocument } from 'mongoose';
 import validator from 'validator';
 
@@ -21,7 +21,6 @@ export class User {
 
   @Prop({
     type: SchemaTypes.String,
-    // required: [true, validationMessages.FIRST_NAME_REQUIRED],
     maxlength: [50, validationMessages.FIRST_NAME_MAX_LENGTH],
     minlength: [2, validationMessages.FIRST_NAME_MIN_LENGTH],
     validate: {
@@ -79,17 +78,14 @@ export class User {
   @Prop({ type: SchemaTypes.String })
   resetPasswordExpireTime: string;
 
-  @Prop({ type: SchemaTypes.String })
-  appleUserId: string;
-
   @Prop({ type: SchemaTypes.Boolean, default: false })
   isEmailVerified: boolean;
 
-  @Prop({ type: SchemaTypes.Boolean, default: false })
-  isActiveUser: boolean;
+  @Prop({ type: SchemaTypes.Boolean, default: true })
+  isActive: boolean;
 
   @Prop({ type: SchemaTypes.Boolean, default: false })
-  isDeletedUser: boolean;
+  isDeleted: boolean;
 
   @Prop({ type: Number, select: false })
   __v: number;

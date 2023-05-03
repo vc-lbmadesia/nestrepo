@@ -49,6 +49,7 @@ export const successMessages = {
   FACEBOOK_GROUP_CONNECTED: 'Facebook group connected successfully',
   SOCIAL_ACCOUNT_LIST: 'Active social accounts fetched successfully',
   SIGNIN_WITH_SOCIALMEDIA: 'Successfully signin with ',
+  USER_CREATE: 'user created successfully',
 };
 
 export const validationMessages = {

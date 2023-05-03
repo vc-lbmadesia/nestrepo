@@ -4,7 +4,7 @@ import { UsersController } from './users.controller';
 import { User, UserSchema } from './schemas/user.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
-import { JwtStrategy } from 'src/auth/jwt.strategy';
+import { JwtStrategy } from '../../src/auth/jwt.strategy';
 
 @Module({
   imports: [
