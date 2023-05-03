@@ -11,16 +11,16 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { _TEST_ } from 'config/environment.config';
-import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { errorMessages } from 'config/messages.config';
 import { RoomsModule } from './rooms/rooms.module';
 import { AuthModule } from './auth/auth.module';
 import { CommonModule } from './common/common.module';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
-import { ErrorsResponseInterceptor } from './common/interceptors/errors-response.interceptor';
 import { WinstonModule } from 'nest-winston';
 import { winstonOptions } from '../config/logger.config';
 import { LoggerMiddleware } from './common/middlewares/logger.middleware';
+import { GlobalExceptionFilter } from './common/filters/global-exception-filter';
 
 @Module({
   imports: [
@@ -58,8 +58,8 @@ import { LoggerMiddleware } from './common/middlewares/logger.middleware';
       }),
     },
     {
-      provide: APP_INTERCEPTOR,
-      useClass: ErrorsResponseInterceptor,
+      provide: APP_FILTER,
+      useClass: GlobalExceptionFilter,
     },
     {
       provide: APP_INTERCEPTOR,

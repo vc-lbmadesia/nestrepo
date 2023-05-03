@@ -1,4 +1,4 @@
-export interface Response<T = any> {
+export interface ResponseType<T = any> {
   status: boolean;
   statusCode: number;
   message: string | string[];

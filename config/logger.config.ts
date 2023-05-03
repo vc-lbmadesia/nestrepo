@@ -27,7 +27,11 @@ export const winstonOptions = (): WinstonModuleOptions => {
   return {
     exitOnError: false,
     level: 'debug',
-    format: winston.format.combine(winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), winston.format.json()),
+    format: winston.format.combine(
+      winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+      winston.format.errors({ stack: true }),
+      winston.format.json(),
+    ),
     transports: [
       new winston.transports.File({ filename: process.env.COMBINED_LOG_PATH, maxsize: 1048576 }),
       new winston.transports.File({ filename: process.env.ERROR_LOG_PATH, level: 'error', maxsize: 8388608 }),
