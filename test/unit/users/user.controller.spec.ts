@@ -5,7 +5,7 @@ import { usersStub } from './stubs/users.stub';
 import { UsersServiceMock } from './mocks/users.service.mock';
 import { successMessages } from '../../../config/messages.config';
 
-describe('Controller', () => {
+describe('UsersController', () => {
   let usersController: UsersController;
   let usersService: UsersServiceMock;
 
@@ -28,6 +28,7 @@ describe('Controller', () => {
     expect(usersController).toBeDefined();
   });
 
+  // test cases to create function of UsersController
   describe('user create', () => {
     let result;
 
@@ -43,6 +44,17 @@ describe('Controller', () => {
 
     it('should be return user data', async () => {
       expect(result.data).toStrictEqual(usersStub);
+    });
+  });
+
+  // test cases to profile function of UsersController
+  describe('user profile', () => {
+    let result;
+
+    it('should be return user profile data', async () => {
+      const req = { user: { id: usersStub._id } };
+      result = await usersController.profile(req);
+      expect(result).toStrictEqual(usersStub);
     });
   });
 });
