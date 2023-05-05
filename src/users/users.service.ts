@@ -3,20 +3,20 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { User, UserDocument } from './schemas/user.schema';
 import mongoose, { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { successMessages, errorMessages } from '../../config/messages.config';
+import { errorMessages } from '../../config/messages.config';
 
 @Injectable()
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  async create(createUserDto: CreateUserDto): Promise<any> {
+  async create(createUserDto: CreateUserDto): Promise<UserDocument> {
     let user;
     user = await this.userModel.findOne({ emailId: createUserDto.emailId });
     if (user) throw new BadRequestException(`${errorMessages.EMAIL_ALREADY_EXISTS} ${user.firstName}.`);
 
     user = await this.userModel.create(createUserDto);
 
-    return { data: user, message: successMessages.USER_CREATE };
+    return user;
   }
 
   findOne(query: object): Promise<UserDocument> {

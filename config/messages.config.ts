@@ -50,6 +50,7 @@ export const successMessages = {
   SOCIAL_ACCOUNT_LIST: 'Active social accounts fetched successfully',
   SIGNIN_WITH_SOCIALMEDIA: 'Successfully signin with ',
   USER_CREATE: 'user created successfully',
+  NOT_FOUND: 'Not found!',
 };
 
 export const validationMessages = {

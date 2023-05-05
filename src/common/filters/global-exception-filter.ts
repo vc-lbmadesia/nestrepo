@@ -20,7 +20,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       GlobalExceptionFilter.name,
     );
 
-    const responseData: ResponseType = {
+    const responseData = {
       status: false,
       statusCode: HttpStatus.BAD_REQUEST,
       message: exception.message,

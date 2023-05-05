@@ -1,7 +1,6 @@
 import { CreateUserDto } from '../../../../src/users/dto/create-user.dto';
 import mongoose from 'mongoose';
 import { usersStub } from '../stubs/users.stub';
-import { UserDocument } from '../../../../src/users/schemas/user.schema';
 import { successMessages } from '../../../../config/messages.config';
 
 export class UsersServiceMock {
@@ -14,7 +13,6 @@ export class UsersServiceMock {
   }
 
   async findById(id: mongoose.Types.ObjectId): Promise<any> {
-    console.log('id ==============================', id);
     if (id === usersStub._id) return usersStub;
   }
 }
