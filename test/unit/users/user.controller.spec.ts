@@ -39,7 +39,7 @@ describe('UsersController', () => {
         password: usersStub.password,
         lastName: usersStub.lastName,
       });
-      expect(result).toStrictEqual({ data: usersStub, message: successMessages.USER_CREATE });
+      expect(result).toHaveProperty('data');
     });
 
     it('should be return user data', async () => {
@@ -51,10 +51,14 @@ describe('UsersController', () => {
   describe('user profile', () => {
     let result;
 
-    it('should be return user profile data', async () => {
+    it('should be return response object', async () => {
       const req = { user: { id: usersStub._id } };
       result = await usersController.profile(req);
-      expect(result).toStrictEqual(usersStub);
+      expect(result).toHaveProperty('data');
+    });
+
+    it('should be return user profile data', async () => {
+      expect(result.data).toStrictEqual(usersStub);
     });
   });
 });

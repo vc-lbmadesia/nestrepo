@@ -5,7 +5,7 @@ import { successMessages } from '../../../../config/messages.config';
 
 export class UsersServiceMock {
   async create(createUserDto: CreateUserDto): Promise<any> {
-    return { data: usersStub, message: successMessages.USER_CREATE };
+    return usersStub;
   }
 
   async findOne(query: object): Promise<any> {

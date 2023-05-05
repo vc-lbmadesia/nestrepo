@@ -4,7 +4,8 @@ import { User, UserDocument } from '../../../src/users/schemas/user.schema';
 import { UsersService } from '../../../src/users/users.service';
 import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { usersStub } from './stubs/users.stub';
+import { usersStub, commonStub } from './stubs/users.stub';
+import { BadRequestException } from '@nestjs/common';
 describe('UsersService', () => {
   let usersService: UsersService;
   let userModel: Model<UserDocument>;
@@ -42,15 +43,26 @@ describe('UsersService', () => {
     });
   });
 
-  // describe('Create function', () => {
-  // it('shold be return users', async () => {
-  //   const user = usersService.create({
-  //     firstName: usersStub.firstName,
-  //     emailId: usersStub.emailId,
-  //     password: usersStub.password,
-  //     lastName: usersStub.lastName,
-  //   });
-  //   expect(user).toStrictEqual(usersStub);
-  // });
-  // });
+  describe('Create function', () => {
+    it('shold be return users when user create', async () => {
+      const user = await usersService.create({
+        firstName: usersStub.firstName,
+        emailId: commonStub.emailId,
+        password: usersStub.password,
+        lastName: usersStub.lastName,
+      });
+      expect(user).toStrictEqual(usersStub);
+    });
+
+    it('shold be throw BadRequestException when user exist', async () => {
+      expect(
+        usersService.create({
+          firstName: usersStub.firstName,
+          emailId: usersStub.emailId,
+          password: usersStub.password,
+          lastName: usersStub.lastName,
+        }),
+      ).rejects.toThrow(BadRequestException);
+    });
+  });
 });

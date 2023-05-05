@@ -11,3 +11,7 @@ export const usersStub = {
   isActive: true,
   isDeleted: false,
 };
+
+export const commonStub = {
+  emailId: faker.internet.email(),
+};
