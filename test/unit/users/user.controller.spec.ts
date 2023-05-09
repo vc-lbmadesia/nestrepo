@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { UsersController } from '../../../src/users/users.controller';
 import { UsersService } from '../../../src/users/users.service';
-import { usersStub } from './stubs/users.stub';
+import { usersFaker } from '../../faker/users.faker';
 import { UsersServiceMock } from './mocks/users.service.mock';
 import { successMessages } from '../../../config/messages.config';
 
@@ -34,16 +34,16 @@ describe('UsersController', () => {
 
     it('should be return response object', async () => {
       result = await usersController.create({
-        firstName: usersStub.firstName,
-        emailId: usersStub.emailId,
-        password: usersStub.password,
-        lastName: usersStub.lastName,
+        firstName: usersFaker.firstName,
+        emailId: usersFaker.emailId,
+        password: usersFaker.password,
+        lastName: usersFaker.lastName,
       });
       expect(result).toHaveProperty('data');
     });
 
     it('should be return user data', async () => {
-      expect(result.data).toStrictEqual(usersStub);
+      expect(result.data).toStrictEqual(usersFaker);
     });
   });
 
@@ -52,13 +52,13 @@ describe('UsersController', () => {
     let result;
 
     it('should be return response object', async () => {
-      const req = { user: { id: usersStub._id } };
+      const req = { user: { id: usersFaker._id } };
       result = await usersController.profile(req);
       expect(result).toHaveProperty('data');
     });
 
     it('should be return user profile data', async () => {
-      expect(result.data).toStrictEqual(usersStub);
+      expect(result.data).toStrictEqual(usersFaker);
     });
   });
 });

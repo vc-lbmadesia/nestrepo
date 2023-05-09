@@ -1,18 +1,18 @@
-import { usersStub } from '../stubs/users.stub';
+import { usersFaker } from '../../../faker/users.faker';
 
 export class UserModelMock {
   findOne(query, ...data): any {
-    if (query.emailId === usersStub.emailId) return this;
+    if (query.emailId === usersFaker.emailId) return this;
   }
 
   async create(query): Promise<object> {
-    return usersStub;
+    return usersFaker;
   }
 
   findById(id): any {
-    if (usersStub._id === id) return this;
+    if (usersFaker._id === id) return this;
   }
   async lean(): Promise<any> {
-    return usersStub;
+    return usersFaker;
   }
 }

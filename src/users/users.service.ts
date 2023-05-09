@@ -13,7 +13,6 @@ export class UsersService {
     let user;
     user = await this.userModel.findOne({ emailId: createUserDto.emailId });
     if (user) throw new BadRequestException(`${errorMessages.EMAIL_ALREADY_EXISTS} ${user.firstName}.`);
-    console.log('hello world');
 
     user = await this.userModel.create(createUserDto);
 

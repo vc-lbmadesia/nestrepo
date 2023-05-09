@@ -1,5 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 import { LoginAuthDto } from './dto/login-auth.dto';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
@@ -17,7 +17,7 @@ export class AuthService {
 
   async signIn(user: any): Promise<any> {
     return {
-      token: await this.jwtService.signAsync({ emailId: user.emailId, id: user._id }),
+      token: this.jwtService.signAsync({ emailId: user.emailId, id: user._id }),
       tokenType: 'Bearer',
     };
   }

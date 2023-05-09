@@ -2,7 +2,7 @@ import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nes
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ResponseType } from '../types/response.type';
-import { successMessages } from 'config/messages.config';
+import { successMessages } from '../../../config/messages.config';
 
 @Injectable()
 export class ResponseInterceptor<T> implements NestInterceptor<T, ResponseType<T>> {

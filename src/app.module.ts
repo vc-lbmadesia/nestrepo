@@ -10,12 +10,11 @@ import { AppController } from './app.controller';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { _TEST_ } from 'config/environment.config';
+import { _TEST_ } from '../config/environment.config';
 import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
-import { errorMessages } from 'config/messages.config';
+import { errorMessages } from '../config/messages.config';
 import { RoomsModule } from './rooms/rooms.module';
 import { AuthModule } from './auth/auth.module';
-import { CommonModule } from './common/common.module';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { WinstonModule } from 'nest-winston';
 import { winstonOptions } from '../config/logger.config';
@@ -28,7 +27,11 @@ import { GlobalExceptionFilter } from './common/filters/global-exception-filter'
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) =>
         _TEST_()
-          ? null
+          ? {
+              uri: configService.get<string>('MONGO_TEST_URL'),
+              useNewUrlParser: true,
+              useUnifiedTopology: true,
+            }
           : {
               uri: configService.get<string>('MONGO_URL'),
               useNewUrlParser: true,
